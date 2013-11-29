@@ -1,0 +1,3 @@
+{
+    "system.cache.translation": "%application%/data/cache/%environment%/translations"
+}
