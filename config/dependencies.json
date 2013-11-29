@@ -1,0 +1,163 @@
+{
+    "dependencies": [
+        {
+            "interfaces": "pallo\\library\\i18n\\locale\\negotiator\\Negotiator",
+            "class": "pallo\\library\\i18n\\locale\\negotiator\\ChainedNegotiator",
+            "id": "chain"
+        },
+        {
+            "interfaces": "pallo\\library\\i18n\\locale\\io\\LocaleIO",
+            "class": "pallo\\application\\i18n\\locale\\io\\ConfigLocaleIO",
+            "id": "config"
+        },
+        {
+            "interfaces": "pallo\\library\\i18n\\locale\\LocaleManager",
+            "class": "pallo\\library\\i18n\\locale\\GenericLocaleManager",
+            "id": "generic",
+            "calls": [
+                {
+                    "method": "__construct",
+                    "arguments": [
+                        {
+                            "name": "io",
+                            "type": "dependency",
+                            "properties": {
+                                "interface": "pallo\\library\\i18n\\locale\\io\\LocaleIO",
+                                "id": "config"
+                            }
+                        },
+                        {
+                            "name": "negotiator",
+                            "type": "dependency",
+                            "properties": {
+                                "interface": "pallo\\library\\i18n\\locale\\negotiator\\Negotiator",
+                                "id": "chain"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "class": "pallo\\library\\system\\file\\File", 
+            "id": "cache.translation",
+            "calls": [
+                {
+                    "method": "__construct",
+                    "arguments": [
+                        {
+                            "name": "path",
+                            "type": "parameter",
+                            "properties": {
+                                "key": "system.cache.translation"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },             
+        {
+            "interfaces": "pallo\\library\\i18n\\translator\\io\\TranslationIO",
+            "class": "pallo\\application\\i18n\\translator\\io\\ParserTranslationIO",
+            "id": "json",
+            "calls": [
+                                {
+                    "method": "__construct",
+                    "arguments": [
+                        {
+                            "name": "parser",
+                            "type": "dependency",
+                            "properties": {
+                                "interface": "pallo\\library\\config\\parser\\Parser",
+                                "id": "json"
+                            }
+                        },
+                        {
+                            "name": "path",
+                            "type": "parameter",
+                            "properties": {
+                                "key": "system.directory.l10n",
+                                "default": "l10n"
+                            }
+                        },
+                        {
+                            "name": "extension",
+                            "type": "scalar",
+                            "properties": {
+                                "value": "json"
+                            }
+                        }
+                    ]
+                }
+            ]            
+        },
+        {
+            "interfaces": "pallo\\library\\i18n\\translator\\io\\TranslationIO",
+            "class": "pallo\\application\\i18n\\translator\\io\\CachedTranslationIO",
+            "id": "cache",
+            "calls": [
+                                {
+                    "method": "__construct",
+                    "arguments": [
+                        {
+                            "name": "io",
+                            "type": "dependency",
+                            "properties": {
+                                "interface": "pallo\\library\\i18n\\translator\\io\\TranslationIO",
+                                "id": "%system.translation.io.cache|json%"
+                            }
+                        },
+                        {
+                            "name": "directory",
+                            "type": "dependency",
+                            "properties": {
+                                "interface": "pallo\\library\\system\\file\\File",
+                                "id": "cache.translation"
+                            }
+                        }
+                    ]
+                }
+            ]            
+        },
+        {
+            "interfaces": "pallo\\library\\i18n\\translator\\TranslatorManager",
+            "class": "pallo\\library\\i18n\\translator\\GenericTranslatorManager",
+            "id": "generic",
+            "calls": [
+                {
+                    "method": "__construct",
+                    "arguments": [
+                        {
+                            "name": "io",
+                            "type": "dependency",
+                            "properties": {
+                                "interface": "pallo\\library\\i18n\\translator\\io\\TranslationIO",
+                                "id": "%system.translation.io.default|json%"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "interfaces": "pallo\\application\\cache\\control\\CacheControl",
+            "class": "pallo\\application\\cache\\control\\TranslationCacheControl",
+            "id": "translations",
+            "calls": [
+                {
+                    "method": "__construct",
+                    "arguments": [
+                        {
+                            "name": "io",
+                            "type": "dependency",
+                            "properties": {
+                                "interface": "pallo\\library\\i18n\\translator\\io\\TranslationIO",
+                                "id": "%system.translation.io.default|json%"
+                            }
+                        }
+                    ]
+                }
+            ]            
+        }        
+    ]
+}
