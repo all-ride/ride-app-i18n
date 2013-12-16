@@ -2,7 +2,7 @@
     "name": "pallo/app-i18n",
     "description": "Integration of the i18n library for a Pallo application.",
     "license": "MIT",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "authors": [
         {
             "name": "Joris Vandeweerd",
