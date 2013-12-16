@@ -54,12 +54,10 @@ class TranslationCacheControl extends AbstractCacheControl {
      * @return null
      */
     public function enable() {
-        $io = $this->config->get('system.translation.io.cache');
-        if ($io) {
+        $io = $this->config->get('system.translation.io.default');
+        if ($io == 'cache') {
             return;
         }
-
-        $io = $this->config->get('system.translation.io.default');
 
         $this->config->set('system.translation.io.cache', $io);
         $this->config->set('system.translation.io.default', 'cache');
@@ -70,6 +68,11 @@ class TranslationCacheControl extends AbstractCacheControl {
      * @return null
      */
     public function disable() {
+        $io = $this->config->get('system.translation.io.default');
+        if ($io != 'cache') {
+            return;
+        }
+
         $io = $this->config->get('system.translation.io.cache');
 
         $this->config->set('system.translation.io.default', $io);
