@@ -3,6 +3,7 @@
 namespace pallo\application\i18n\translator\io;
 
 use pallo\library\config\parser\Parser;
+use pallo\library\config\exception\ConfigException;
 use pallo\library\config\ConfigHelper;
 use pallo\library\i18n\exception\I18nException;
 use pallo\library\i18n\translator\io\AbstractTranslationIO;
@@ -139,7 +140,12 @@ class ParserTranslationIO extends AbstractTranslationIO {
         $translations = array();
 
         foreach ($translationFiles as $translationFile) {
-            $fileTranslations = $this->parser->parseToPhp($translationFile->read());
+            try {
+                $fileTranslations = $this->parser->parseToPhp($translationFile->read());
+            } catch (ConfigException $exception) {
+                throw new I18nException('Could not read the translations from ' . $translationFile, 0, $exception);
+            }
+
             $fileTranslations = $this->configHelper->flattenConfig($fileTranslations);
 
             $translations = $fileTranslations + $translations;
