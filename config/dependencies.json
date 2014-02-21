@@ -1,18 +1,18 @@
 {
     "dependencies": [
         {
-            "interfaces": "pallo\\library\\i18n\\locale\\negotiator\\Negotiator",
-            "class": "pallo\\library\\i18n\\locale\\negotiator\\ChainedNegotiator",
+            "interfaces": "ride\\library\\i18n\\locale\\negotiator\\Negotiator",
+            "class": "ride\\library\\i18n\\locale\\negotiator\\ChainedNegotiator",
             "id": "chain"
         },
         {
-            "interfaces": "pallo\\library\\i18n\\locale\\io\\LocaleIO",
-            "class": "pallo\\application\\i18n\\locale\\io\\ConfigLocaleIO",
+            "interfaces": "ride\\library\\i18n\\locale\\io\\LocaleIO",
+            "class": "ride\\application\\i18n\\locale\\io\\ConfigLocaleIO",
             "id": "config"
         },
         {
-            "interfaces": "pallo\\library\\i18n\\locale\\LocaleManager",
-            "class": "pallo\\library\\i18n\\locale\\GenericLocaleManager",
+            "interfaces": "ride\\library\\i18n\\locale\\LocaleManager",
+            "class": "ride\\library\\i18n\\locale\\GenericLocaleManager",
             "id": "generic",
             "calls": [
                 {
@@ -22,7 +22,7 @@
                             "name": "io",
                             "type": "dependency",
                             "properties": {
-                                "interface": "pallo\\library\\i18n\\locale\\io\\LocaleIO",
+                                "interface": "ride\\library\\i18n\\locale\\io\\LocaleIO",
                                 "id": "config"
                             }
                         },
@@ -30,7 +30,7 @@
                             "name": "negotiator",
                             "type": "dependency",
                             "properties": {
-                                "interface": "pallo\\library\\i18n\\locale\\negotiator\\Negotiator",
+                                "interface": "ride\\library\\i18n\\locale\\negotiator\\Negotiator",
                                 "id": "chain"
                             }
                         }
@@ -39,7 +39,7 @@
             ]
         },
         {
-            "class": "pallo\\library\\system\\file\\File", 
+            "class": "ride\\library\\system\\file\\File", 
             "id": "cache.translation",
             "calls": [
                 {
@@ -57,8 +57,8 @@
             ]
         },             
         {
-            "interfaces": "pallo\\library\\i18n\\translator\\io\\TranslationIO",
-            "class": "pallo\\application\\i18n\\translator\\io\\ParserTranslationIO",
+            "interfaces": "ride\\library\\i18n\\translator\\io\\TranslationIO",
+            "class": "ride\\application\\i18n\\translator\\io\\ParserTranslationIO",
             "id": "json",
             "calls": [
                                 {
@@ -68,7 +68,7 @@
                             "name": "parser",
                             "type": "dependency",
                             "properties": {
-                                "interface": "pallo\\library\\config\\parser\\Parser",
+                                "interface": "ride\\library\\config\\parser\\Parser",
                                 "id": "json"
                             }
                         },
@@ -92,8 +92,8 @@
             ]            
         },
         {
-            "interfaces": "pallo\\library\\i18n\\translator\\io\\TranslationIO",
-            "class": "pallo\\application\\i18n\\translator\\io\\CachedTranslationIO",
+            "interfaces": "ride\\library\\i18n\\translator\\io\\TranslationIO",
+            "class": "ride\\application\\i18n\\translator\\io\\CachedTranslationIO",
             "id": "cache",
             "calls": [
                                 {
@@ -103,7 +103,7 @@
                             "name": "io",
                             "type": "dependency",
                             "properties": {
-                                "interface": "pallo\\library\\i18n\\translator\\io\\TranslationIO",
+                                "interface": "ride\\library\\i18n\\translator\\io\\TranslationIO",
                                 "id": "%system.translation.io.cache|json%"
                             }
                         },
@@ -111,7 +111,7 @@
                             "name": "directory",
                             "type": "dependency",
                             "properties": {
-                                "interface": "pallo\\library\\system\\file\\File",
+                                "interface": "ride\\library\\system\\file\\File",
                                 "id": "cache.translation"
                             }
                         }
@@ -120,8 +120,8 @@
             ]            
         },
         {
-            "interfaces": "pallo\\library\\i18n\\translator\\TranslatorManager",
-            "class": "pallo\\library\\i18n\\translator\\GenericTranslatorManager",
+            "interfaces": "ride\\library\\i18n\\translator\\TranslatorManager",
+            "class": "ride\\library\\i18n\\translator\\GenericTranslatorManager",
             "id": "generic",
             "calls": [
                 {
@@ -131,7 +131,7 @@
                             "name": "io",
                             "type": "dependency",
                             "properties": {
-                                "interface": "pallo\\library\\i18n\\translator\\io\\TranslationIO",
+                                "interface": "ride\\library\\i18n\\translator\\io\\TranslationIO",
                                 "id": "%system.translation.io.default|json%"
                             }
                         }
@@ -140,8 +140,8 @@
             ]
         },
         {
-            "interfaces": "pallo\\application\\cache\\control\\CacheControl",
-            "class": "pallo\\application\\cache\\control\\TranslationCacheControl",
+            "interfaces": "ride\\application\\cache\\control\\CacheControl",
+            "class": "ride\\application\\cache\\control\\TranslationCacheControl",
             "id": "translations",
             "calls": [
                 {
@@ -151,7 +151,7 @@
                             "name": "io",
                             "type": "dependency",
                             "properties": {
-                                "interface": "pallo\\library\\i18n\\translator\\io\\TranslationIO",
+                                "interface": "ride\\library\\i18n\\translator\\io\\TranslationIO",
                                 "id": "%system.translation.io.default|json%"
                             }
                         }

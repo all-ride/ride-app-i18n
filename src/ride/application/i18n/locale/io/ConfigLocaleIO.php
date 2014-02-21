@@ -1,11 +1,11 @@
 <?php
 
-namespace pallo\application\i18n\locale\io;
+namespace ride\application\i18n\locale\io;
 
-use pallo\library\config\Config;
-use pallo\library\config\ConfigHelper;
-use pallo\library\i18n\locale\io\LocaleIO;
-use pallo\library\i18n\locale\GenericLocale;
+use ride\library\config\Config;
+use ride\library\config\ConfigHelper;
+use ride\library\i18n\locale\io\LocaleIO;
+use ride\library\i18n\locale\GenericLocale;
 
 /**
  * Implementation of LocaleIO that reads localization data from the Zibo
@@ -15,20 +15,20 @@ class ConfigLocaleIO implements LocaleIO {
 
     /**
      * Instance of the config
-     * @var pallo\library\config\Config
+     * @var ride\library\config\Config
      */
     protected $config;
 
     /**
      * Instance of the config helper
-     * @var pallo\library\config\ConfigHelper
+     * @var ride\library\config\ConfigHelper
      */
     protected $configHelper;
 
     /**
      * Constructs a new config LocaleIO
-     * @param pallo\library\config\Config $config
-     * @param pallo\library\config\ConfigHelper $configHelper
+     * @param ride\library\config\Config $config
+     * @param ride\library\config\ConfigHelper $configHelper
      * @return null
      */
     public function __construct(Config $config, ConfigHelper $configHelper) {
@@ -85,7 +85,7 @@ class ConfigLocaleIO implements LocaleIO {
      * Creates an instance of the Locale class with the given code and options
      * @param string $code
      * @param array $options
-     * @return pallo\library\i18n\locale\Locale
+     * @return ride\library\i18n\locale\Locale
      */
     private function createLocaleObject($code, array $options = array()) {
         $name = $code;
