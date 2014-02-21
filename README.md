@@ -1,3 +1,3 @@
-# Pallo: I18n
+# Ride: I18n
 
-Integration of the i18n library with a Pallo application.
+Integration of the i18n library with a Ride application.

@@ -1,11 +1,11 @@
 <?php
 
-namespace pallo\application\cache\control;
+namespace ride\application\cache\control;
 
-use pallo\application\i18n\translator\io\CachedTranslationIO;
+use ride\application\i18n\translator\io\CachedTranslationIO;
 
-use pallo\library\config\Config;
-use pallo\library\i18n\translator\io\TranslationIO;
+use ride\library\config\Config;
+use ride\library\i18n\translator\io\TranslationIO;
 
 /**
  * Cache control implementation for the translations
@@ -20,20 +20,20 @@ class TranslationCacheControl extends AbstractCacheControl {
 
     /**
      * Instance of the translation I/O
-     * @var pallo\library\i18n\translator\io\TranslationIO
+     * @var ride\library\i18n\translator\io\TranslationIO
      */
     private $io;
 
     /**
      * Instance of the configuration
-     * @var pallo\library\config\Config
+     * @var ride\library\config\Config
      */
     private $config;
 
     /**
      * Constructs a new translation cache control
-     * @param pallo\library\i18n\translation\io\TranslationIO $io
-     * @param pallo\library\config\Config $config
+     * @param ride\library\i18n\translation\io\TranslationIO $io
+     * @param ride\library\config\Config $config
      * @return null
      */
     public function __construct(TranslationIO $io, Config $config) {

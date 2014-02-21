@@ -1,6 +1,6 @@
 {
-    "name": "pallo/app-i18n",
-    "description": "Integration of the i18n library for a Pallo application.",
+    "name": "ride/app-i18n",
+    "description": "Integration of the i18n library for a Ride application.",
     "license": "MIT",
     "version": "0.1.3",
     "authors": [
@@ -10,13 +10,13 @@
         }
     ],
     "require": {
-        "pallo/app": ">=0.4.0",
-        "pallo/lib-i18n": ">=0.1.0"
+        "ride/app": ">=0.4.0",
+        "ride/lib-i18n": ">=0.1.0"
     },
     "autoload": {
         "psr-0": {
-            "pallo\\application\\cache\\control\\": ["src/", "test/src/"],
-            "pallo\\application\\i18n\\": ["src/", "test/src/"]
+            "ride\\application\\cache\\control\\": ["src/", "test/src/"],
+            "ride\\application\\i18n\\": ["src/", "test/src/"]
         }
     }    
 }
