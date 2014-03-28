@@ -20,20 +20,20 @@ class TranslationCacheControl extends AbstractCacheControl {
 
     /**
      * Instance of the translation I/O
-     * @var ride\library\i18n\translator\io\TranslationIO
+     * @var \ride\library\i18n\translator\io\TranslationIO
      */
     private $io;
 
     /**
      * Instance of the configuration
-     * @var ride\library\config\Config
+     * @var \ride\library\config\Config
      */
     private $config;
 
     /**
      * Constructs a new translation cache control
-     * @param ride\library\i18n\translation\io\TranslationIO $io
-     * @param ride\library\config\Config $config
+     * @param \ride\library\i18n\translator\io\TranslationIO $io
+     * @param \ride\library\config\Config $config
      * @return null
      */
     public function __construct(TranslationIO $io, Config $config) {
