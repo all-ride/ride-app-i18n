@@ -15,20 +15,20 @@ class ConfigLocaleIO implements LocaleIO {
 
     /**
      * Instance of the config
-     * @var ride\library\config\Config
+     * @var \ride\library\config\Config
      */
     protected $config;
 
     /**
      * Instance of the config helper
-     * @var ride\library\config\ConfigHelper
+     * @var \ride\library\config\ConfigHelper
      */
     protected $configHelper;
 
     /**
      * Constructs a new config LocaleIO
-     * @param ride\library\config\Config $config
-     * @param ride\library\config\ConfigHelper $configHelper
+     * @param \ride\library\config\Config $config
+     * @param \ride\library\config\ConfigHelper $configHelper
      * @return null
      */
     public function __construct(Config $config, ConfigHelper $configHelper) {
@@ -85,7 +85,7 @@ class ConfigLocaleIO implements LocaleIO {
      * Creates an instance of the Locale class with the given code and options
      * @param string $code
      * @param array $options
-     * @return ride\library\i18n\locale\Locale
+     * @return \ride\library\i18n\locale\Locale
      */
     private function createLocaleObject($code, array $options = array()) {
         $name = $code;

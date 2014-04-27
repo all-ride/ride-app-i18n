@@ -16,13 +16,13 @@ class CachedTranslationIO implements TranslationIO {
 
     /**
      * TranslationIO which is cached by this TranslationIO
-     * @var ride\library\i18n\translation\io\TranslationIO
+     * @var \ride\library\i18n\translator\io\TranslationIO
      */
     private $io;
 
     /**
      * Directory to write the cache to
-     * @var ride\library\system\file\File
+     * @var \ride\library\system\file\File
      */
     private $directory;
 
@@ -35,7 +35,7 @@ class CachedTranslationIO implements TranslationIO {
     /**
      * Constructs a new cached TranslationIO
      * @param TranslationIO $io TranslationIO which needs a cache
-     * @param ride\library\system\file\File $directory Directory for the cache
+     * @param \ride\library\system\file\File $directory Directory for the cache
      * @return null
      */
     public function __construct(TranslationIO $io, File $directory) {
@@ -46,7 +46,7 @@ class CachedTranslationIO implements TranslationIO {
 
     /**
      * Sets the directory for the generated code
-     * @param zibo\library\filesystem\File $directory The directory to generate
+     * @param \ride\library\system\file\File $directory The directory to generate
      * the code in
      * @return null
      */
@@ -56,7 +56,7 @@ class CachedTranslationIO implements TranslationIO {
 
     /**
      * Gets the directory for the generated code
-     * @return zibo\library\filesystem\File The directory to generate the code
+     * @return \ride\library\system\file\File The directory to generate the code
      * in
      */
     public function getDirectory() {
@@ -66,7 +66,7 @@ class CachedTranslationIO implements TranslationIO {
     /**
      * Gets the cache file for a specific locale
      * @param string $locale Code of the locale
-     * @return ride\library\system\file\File
+     * @return \ride\library\system\file\File
      */
     public function getFile($locale) {
         return $this->directory->getChild('translations-' . $locale . '.php');
