@@ -23,19 +23,19 @@ class ParserTranslationIO extends AbstractTranslationIO {
 
     /**
      * Browser of the file system
-     * @var ride\library\system\file\browser\FileBrowser
+     * @var \ride\library\system\file\browser\FileBrowser
      */
     protected $fileBrowser;
 
     /**
      * Parser for the configuration files
-     * @var ride\library\config\parser\Parser
+     * @var \ride\library\config\parser\Parser
      */
     protected $parser;
 
     /**
      * Instance of the config helper
-     * @var ride\library\config\ConfigHelper
+     * @var \ride\library\config\ConfigHelper
      */
     protected $configHelper;
 
@@ -53,9 +53,9 @@ class ParserTranslationIO extends AbstractTranslationIO {
 
     /**
      * Constructs a new parser translation IO
-     * @param ride\library\system\file\browser\FileBrowser $fileBrowser
-     * @param ride\library\config\parser\Parser $parser
-     * @param ride\library\config\ConfigHelper $configHelper
+     * @param \ride\library\system\file\browser\FileBrowser $fileBrowser
+     * @param \ride\library\config\parser\Parser $parser
+     * @param \ride\library\config\ConfigHelper $configHelper
      * @param string $file
      * @param string $path
      * @return null
@@ -96,7 +96,7 @@ class ParserTranslationIO extends AbstractTranslationIO {
      * @param string $key Key of the translation
      * @param string $translation Translation value
      * @return null
-     * @throws ride\library\i18n\exception\I18nException when one of the
+     * @throws \ride\library\i18n\exception\I18nException when one of the
      * provided arguments is empty or invalid
      */
     public function setTranslation($localeCode, $key, $translation = null) {
@@ -156,7 +156,7 @@ class ParserTranslationIO extends AbstractTranslationIO {
 
     /**
      * Writes the provided translations to the provided file
-     * @param ride\library\system\file\File $translationFile File to store the
+     * @param \ride\library\system\file\File $translationFile File to store the
      * translations in
      * @param array $translations Array with the translation key as array key
      * and the translation as value
@@ -175,7 +175,7 @@ class ParserTranslationIO extends AbstractTranslationIO {
      * Gets the file for set translations. Keeping them separate for easy
      * synchronisation.
      * @param string $localeCode Code of the locale
-     * @return ride\library\system\file\File
+     * @return \ride\library\system\file\File
      */
     protected function getCustomTranslationsFile($localeCode) {
         $path = null;
