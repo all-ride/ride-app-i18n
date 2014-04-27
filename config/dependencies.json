@@ -39,7 +39,7 @@
             ]
         },
         {
-            "class": "ride\\library\\system\\file\\File", 
+            "class": "ride\\library\\system\\file\\File",
             "id": "cache.translation",
             "calls": [
                 {
@@ -49,13 +49,13 @@
                             "name": "path",
                             "type": "parameter",
                             "properties": {
-                                "key": "system.cache.translation"
+                                "key": "system.cache.l10n"
                             }
                         }
                     ]
                 }
             ]
-        },             
+        },
         {
             "interfaces": "ride\\library\\i18n\\translator\\io\\TranslationIO",
             "class": "ride\\application\\i18n\\translator\\io\\ParserTranslationIO",
@@ -89,7 +89,7 @@
                         }
                     ]
                 }
-            ]            
+            ]
         },
         {
             "interfaces": "ride\\library\\i18n\\translator\\io\\TranslationIO",
@@ -104,7 +104,7 @@
                             "type": "dependency",
                             "properties": {
                                 "interface": "ride\\library\\i18n\\translator\\io\\TranslationIO",
-                                "id": "%system.translation.io.cache|json%"
+                                "id": "%system.l10n.io.cache|json%"
                             }
                         },
                         {
@@ -117,7 +117,7 @@
                         }
                     ]
                 }
-            ]            
+            ]
         },
         {
             "interfaces": "ride\\library\\i18n\\translator\\TranslatorManager",
@@ -132,7 +132,7 @@
                             "type": "dependency",
                             "properties": {
                                 "interface": "ride\\library\\i18n\\translator\\io\\TranslationIO",
-                                "id": "%system.translation.io.default|json%"
+                                "id": "%system.l10n.io.default|json%"
                             }
                         }
                     ]
@@ -152,12 +152,12 @@
                             "type": "dependency",
                             "properties": {
                                 "interface": "ride\\library\\i18n\\translator\\io\\TranslationIO",
-                                "id": "%system.translation.io.default|json%"
+                                "id": "%system.l10n.io.default|json%"
                             }
                         }
                     ]
                 }
-            ]            
-        }        
+            ]
+        }
     ]
 }

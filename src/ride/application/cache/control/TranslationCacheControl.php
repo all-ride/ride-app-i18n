@@ -54,13 +54,13 @@ class TranslationCacheControl extends AbstractCacheControl {
      * @return null
      */
     public function enable() {
-        $io = $this->config->get('system.translation.io.default');
+        $io = $this->config->get('system.l10n.io.default');
         if ($io == 'cache') {
             return;
         }
 
-        $this->config->set('system.translation.io.cache', $io);
-        $this->config->set('system.translation.io.default', 'cache');
+        $this->config->set('system.l10n.io.cache', $io);
+        $this->config->set('system.l10n.io.default', 'cache');
     }
 
     /**
@@ -68,15 +68,15 @@ class TranslationCacheControl extends AbstractCacheControl {
      * @return null
      */
     public function disable() {
-        $io = $this->config->get('system.translation.io.default');
+        $io = $this->config->get('system.l10n.io.default');
         if ($io != 'cache') {
             return;
         }
 
-        $io = $this->config->get('system.translation.io.cache');
+        $io = $this->config->get('system.l10n.io.cache');
 
-        $this->config->set('system.translation.io.default', $io);
-        $this->config->set('system.translation.io.cache', null);
+        $this->config->set('system.l10n.io.default', $io);
+        $this->config->set('system.l10n.io.cache', null);
     }
 
     /**
