@@ -2,7 +2,7 @@
     "name": "ride/app-i18n",
     "description": "Integration of the i18n library for a Ride application.",
     "license": "MIT",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "authors": [
         {
             "name": "Joris Vandeweerd",
