@@ -49,7 +49,7 @@
                             "name": "path",
                             "type": "parameter",
                             "properties": {
-                                "key": "system.cache.l10n"
+                                "key": "system.cache.translation"
                             }
                         }
                     ]
