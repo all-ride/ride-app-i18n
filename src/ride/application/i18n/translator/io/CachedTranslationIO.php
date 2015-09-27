@@ -39,9 +39,22 @@ class CachedTranslationIO implements TranslationIO {
      * @return null
      */
     public function __construct(TranslationIO $io, File $directory) {
-        $this->translations = array();
-        $this->io = $io;
         $this->setDirectory($directory);
+        $this->io = $io;
+        $this->translations = array();
+        $this->needsWrite = array();
+    }
+
+    /**
+     * Destruction of the cached ConfigIO
+     * @return null
+     */
+    public function __destruct() {
+        if ($this->needsWrite) {
+            foreach ($this->needsWrite as $locale => $null) {
+                $this->warmCache($locale);
+            }
+        }
     }
 
     /**
@@ -82,10 +95,8 @@ class CachedTranslationIO implements TranslationIO {
     public function setTranslation($localeCode, $key, $translation = null) {
         $this->io->setTranslation($localeCode, $key, $translation);
 
-        $file = $this->getFile($localeCode);
-        if ($file->exists()) {
-            $file->delete();
-        }
+        $this->clearCache($localeCode);
+        $this->needsWrite[$localeCode] = true;
 
         if (isset($this->translations[$localeCode])) {
             unset($this->translations[$localeCode]);
@@ -136,8 +147,24 @@ class CachedTranslationIO implements TranslationIO {
         // we have no translations, use the wrapped I/O to get them
         $this->translations[$localeCode] = $this->io->getTranslations($localeCode);
 
+        // return the translations
+        return $this->translations[$localeCode];
+    }
+
+    /**
+     * Warms the cache of the translator
+     * @return array An associative array with translation key - value pairs
+     */
+    public function warmCache($localeCode) {
+        if (!isset($this->translations[$localeCode])) {
+            $this->translations[$localeCode] = $this->io->getTranslations($localeCode);
+        }
+
         // generate the PHP code for the obtained translations
         $php = $this->generatePhp($this->translations[$localeCode]);
+
+        // obtain the file for the requested locale
+        $file = $this->getFile($localeCode);
 
         // make sure the parent directory of the script exists
         $parent = $file->getParent();
@@ -151,9 +178,28 @@ class CachedTranslationIO implements TranslationIO {
     }
 
     /**
-	 * Generates a PHP source file for the provided translations
-	 * @param array $translations Array with the translations
-	 * @return string
+     * Clears the cache of the dependency container
+     * @param string $localeCode Set code to clear the cache of a specific
+     * locale
+     * @return null
+     */
+    public function clearCache($localeCode = null) {
+        if ($localeCode !== null) {
+            // specific locale
+            $file = $this->getFile($localeCode);
+            if ($file->exists()) {
+                $file->delete();
+            }
+        } elseif ($this->directory->exists()) {
+            // all locales
+            $this->directory->delete();
+        }
+    }
+
+    /**
+     * Generates a PHP source file for the provided translations
+     * @param array $translations Array with the translations
+     * @return string
      */
     protected function generatePhp(array $translations) {
         $output = "<?php\n\n";

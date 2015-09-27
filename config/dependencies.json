@@ -140,7 +140,7 @@
             ]
         },
         {
-            "interfaces": "ride\\application\\cache\\control\\CacheControl",
+            "interfaces": "ride\\library\\cache\\control\\CacheControl",
             "class": "ride\\application\\cache\\control\\TranslationCacheControl",
             "id": "translations",
             "calls": [
@@ -153,6 +153,14 @@
                             "properties": {
                                 "interface": "ride\\library\\i18n\\translator\\io\\TranslationIO",
                                 "id": "%system.l10n.io.default|json%"
+                            }
+                        },
+                        {
+                            "name": "locales",
+                            "type": "call",
+                            "properties": {
+                                "interface": "ride\\library\\i18n\\I18n",
+                                "method": "getLocaleCodeList"
                             }
                         }
                     ]
