@@ -34,11 +34,13 @@ class TranslationCacheControl extends AbstractCacheControl {
      * Constructs a new translation cache control
      * @param \ride\library\i18n\translator\io\TranslationIO $io
      * @param \ride\library\config\Config $config
+     * @param array $locales Array with the available locale codes
      * @return null
      */
-    public function __construct(TranslationIO $io, Config $config) {
+    public function __construct(TranslationIO $io, Config $config, array $locales) {
         $this->io = $io;
         $this->config = $config;
+        $this->locales = $locales;
     }
 
     /**
@@ -88,17 +90,26 @@ class TranslationCacheControl extends AbstractCacheControl {
     }
 
     /**
-	 * Clears this cache
-	 * @return null
+     * Warms this cache
+     * @return null
      */
-    public function clear() {
+    public function warm() {
         if (!$this->isEnabled()) {
             return;
         }
 
-        $directory = $this->io->getDirectory();
-        if ($directory->exists()) {
-            $directory->delete();
+        foreach ($this->locales as $locale) {
+            $this->io->warmCache($locale);
+        }
+    }
+
+    /**
+     * Clears this cache
+     * @return null
+     */
+    public function clear() {
+        if ($this->isEnabled()) {
+            $this->io->clearCache();
         }
     }
 
