@@ -74,6 +74,28 @@ class ParserTranslationIO extends AbstractTranslationIO {
      * @return array an associative array with translation key - value pairs
      */
     protected function readTranslations($localeCode) {
+        $localeCodes = array($localeCode);
+
+        if (strpos($localeCode, '_')) {
+            list($language, $territory) = explode('_', $localeCode, 2);
+
+            array_push($localeCodes, $language);
+        }
+
+        $translations = array();
+        foreach ($localeCodes as $localeCode) {
+            $translations += $this->readTranslationsFromLocale($localeCode);
+        }
+
+        return $translations;
+    }
+
+    /**
+     * Gets all the translations for the provided locale
+     * @param string $localeCode code of the locale
+     * @return array an associative array with translation key - value pairs
+     */
+    protected function readTranslationsFromLocale($localeCode) {
         $path = null;
         if ($this->path) {
             $path = $this->path . File::DIRECTORY_SEPARATOR;
