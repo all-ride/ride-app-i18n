@@ -1,7 +1,7 @@
 i18n.locale.%code%.%property%       Property of a locale, having at least one property (name) will define the locale
 i18n.order                          Comma separated list of locale codes in the desired order of priority
-system.cache.l10n                   Path to the directory of the translation cache
-system.directory.l10n               Name of the translation directory
-system.l10n.io.cache                Dependency id of the cached translation IO
-system.l10n.io.default              Dependency id of the translation IO in use
+system.cache.translation            Path to the directory of the translation cache
+system.directory.l10n               Name of the translation directory (defaults to l10n)
+system.l10n.io.cache                Dependency id of the cached translation IO (defaults to json)
+system.l10n.io.default              Dependency id of the translation IO in use (defaults to json)
 
