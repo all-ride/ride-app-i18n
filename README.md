@@ -13,7 +13,7 @@ Integration of the i18n library with a Ride application.
 
 ## Related Modules 
 
-- [ride/app](https://github.com/all-ride/ride-app-database)
+- [ride/app](https://github.com/all-ride/ride-app)
 - [ride/app-i18n-de](https://github.com/all-ride/ride-app-i18n-de)
 - [ride/app-i18n-en](https://github.com/all-ride/ride-app-i18n-en)
 - [ride/app-i18n-fr](https://github.com/all-ride/ride-app-i18n-fr)
