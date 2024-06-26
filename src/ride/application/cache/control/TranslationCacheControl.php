@@ -30,6 +30,8 @@ class TranslationCacheControl extends AbstractCacheControl {
      */
     private $config;
 
+    private $locales;
+
     /**
      * Constructs a new translation cache control
      * @param \ride\library\i18n\translator\io\TranslationIO $io

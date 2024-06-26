@@ -32,6 +32,8 @@ class CachedTranslationIO implements TranslationIO {
      */
     private $translations;
 
+    private  $needsWrite;
+
     /**
      * Constructs a new cached TranslationIO
      * @param TranslationIO $io TranslationIO which needs a cache
